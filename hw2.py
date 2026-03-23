@@ -39,12 +39,16 @@ def eg__tour(d:filename):
       d1   = Data([d0.cols.names] + rows)
       for algo in ALGOS:
         # TODO: run algo(d1), iterate to final e
+            h, e, row = None, None, None
+            for h, e, row in algo(d1): pass
+            if e is not None:
+              seen[algo.__name__].append(int(100 * e))
         #   for h, e, row in algo(d1): pass
         #   seen[algo.__name__].append(int(100*e))
-        pass
+        
 
-    # TODO: winners = top(seen, eps=0.35 * sd)
-    # TODO: for w in winners: wins[w] += 1
+    winners = top(seen, eps=0.35 * sd)
+    for w in winners: wins[w] += 1
 
   print(f"\n{'algo':>12} {'wins':>6}")
   print("-" * 25)
