@@ -56,3 +56,21 @@ def eg__tour(d:filename):
     print(f"{name:>12} {wins[name]:>6}")
 
 if __name__ == "__main__": main(globals())
+#
+# Result table 
+# algo       wins
+# ------------------
+# ls         127
+# lsRminus   17
+# sa         112
+# saRplus    127
+
+# Do restarts help?
+# Yes, restarts clearly help. ls (restarts=100) won 127 files while lsRminus (restarts=0) only won 17 
+# — a dramatic difference showing that without restarts, local search gets trapped in local optima. 
+# Similarly, saRplus (restarts=100) outperformed sa (restarts=0) with 127 vs 112 wins
+
+# Does SA beat LS?
+# Not clearly — both ls and saRplus tied at 127 wins, suggesting that when restarts are enabled, 
+# the acceptance strategy (greedy vs probabilistic) matters less than the ability to escape local optima via restarting. 
+# SA's advantage over LS diminishes when LS is also given restarts.
